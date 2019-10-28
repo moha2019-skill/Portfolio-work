@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-   {% load staticfiles %}
+     {% load staticfiles %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
-  <title>Moha Gad</title>
+  <title>Mohammed Gad</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -38,7 +38,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand active" href="{% url 'home' %}">Mohamed Gad</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Mohamed Gad</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,48 +46,31 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link " href="https://www.linkedin.com/in/moha-gawad-22866bb1">Linkden</a>
           <!--<a class="nav-item nav-link" href="{% static 'Moha resume.pdf' %}">Resume</a>-->
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
   </header>
-
   <main role="main">
-
-    <section class="jumbotron text-center"style="background-color:white" >
-      <div class="container" style="background-color:white">
-        <h1 class="jumbotron-heading">Hello, I'm Mohamed</h1>
-
-            <img class="rounded mx-auto d-block" src="{% static 'moha.jpg' %} " />
-            <br/>
-              <p class="lead text-muted">Welcome to my site. Here's a bit about myself.</p>
-
-              <a href="mailto:moha.gad@smu.ca" class="btn btn-secondary my-1"  >Email Me!</a>
-              <a class="btn btn-secondary my-1" href="{% url 'allblogs' %}"> Biography</a>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
       <div class="container">
-        <h1>My Projects </h1>
 
-        <div class="row">
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="{{job.image.url}}"  width="100%" height="225"/>
-                <div class="card-body">
-                <p class="card-text">{{ job.summary}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+    <h1 class="text-center pt-4"> Welcome to Moha's Blog</h1>
+    <br/>
+    <br/>
+    <br/>
+    <h2>Latest Blogs</h2>
+    <hr width="100%"/>
 
-      </div>
-    </div>
-    </div>
+    {% for blog in blogs.all %}
+    <a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
+    {{blog.pub_date_pretty}}
+    <br/>
+    <img class="img-fluid" src="{{blog.image.url}}"  height="300" width="300" alt="Technology">
+    <br/>
+    <p>{{blog.summary}}</p>
+    {% endfor %}
+
+</div>
   </main>
 
   <footer class="text-muted">
